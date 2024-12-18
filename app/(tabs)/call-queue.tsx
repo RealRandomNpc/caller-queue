@@ -15,7 +15,10 @@ import BottomSheet, {
 import { MaterialIcons } from "@expo/vector-icons";
 import { cssInterop, remapProps } from "nativewind";
 import SingleQueue from "@/components/SingleQueue";
-import RNImmediatePhoneCall from "react-native-immediate-phone-call";
+// The original library is not working on ios
+// Someone submitted a pr with a fix -
+// https://github.com/wumke/react-native-immediate-phone-call/pull/55
+import RNImmediatePhoneCall from "@/lib/react-native-immediate-phone-call";
 
 const DEFAULT_COUNTDOWN = 5;
 
