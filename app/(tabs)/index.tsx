@@ -100,7 +100,7 @@ export default function index() {
             <BottomSheetTextInput
               onChangeText={(text) => setListNameInput(text)}
               value={listNameInput}
-              className=" rounded bg-gray-50 px-3"
+              className=" rounded bg-gray-50 px-4 py-2 text-lg"
               placeholder={"List name"}
             />
           <Pressable
