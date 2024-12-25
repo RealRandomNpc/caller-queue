@@ -15,10 +15,7 @@ import BottomSheet, {
 import { MaterialIcons } from "@expo/vector-icons";
 import { cssInterop, remapProps } from "nativewind";
 import SingleQueue from "@/components/SingleQueue";
-// The original library is not working on ios
-// Someone submitted a pr with a fix -
-// https://github.com/wumke/react-native-immediate-phone-call/pull/55
-import RNImmediatePhoneCall from "@/lib/react-native-immediate-phone-call";
+import RNImmediatePhoneCall from 'react-native-immediate-phone-call';
 
 const DEFAULT_COUNTDOWN = 5;
 
@@ -47,10 +44,7 @@ export default function CallQueue() {
 
         if (selectedContact && selectedContact.phoneNumbers) {
           const selectedPhoneNumber = selectedContact.phoneNumbers[0].number;
-          // console.log("CALLED", selectedPhoneNumber);
-          RNImmediatePhoneCall.immediatePhoneCall(
-            selectedPhoneNumber
-          );
+          RNImmediatePhoneCall.immediatePhoneCall(selectedPhoneNumber);
         }
         if (
           Number(selectedQueue?.contacts.length) >
