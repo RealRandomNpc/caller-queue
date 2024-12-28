@@ -96,7 +96,17 @@ export const CallerQueuesProvider = ({
     ),
     []
   );
-  const openContactListBottomSheet = () => snapToIndex(1);
+  const openContactListBottomSheet = async () => {
+    const { status } = await Contacts.requestPermissionsAsync();
+    if (status === "granted") {
+      snapToIndex(1);
+    } else {
+      Alert.alert(
+        "Permissions Needed For App",
+        "Please give permissions to your contacts in order to use the app."
+      );
+    }
+  };
 
   // const toggleCallingState = () => setIsCalling(prev => !prev)
 

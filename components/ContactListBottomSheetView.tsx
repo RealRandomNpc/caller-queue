@@ -86,7 +86,9 @@ export default function ContactListBottomSheetView({
         </View>
         <View style={{ maxWidth: "60%" }}>
           <Text className="text-c-text text-lg">{item.name}</Text>
-          <Text className="text-sm text-c-icon">{((item?.phoneNumbers || []) as any[])[0]?.number || ""}</Text>
+          <Text className="text-sm text-c-icon">
+            {((item?.phoneNumbers || []) as any[])[0]?.number || ""}
+          </Text>
         </View>
         <TouchableHighlight
           underlayColor={"#0a7ea4"}
@@ -104,10 +106,7 @@ export default function ContactListBottomSheetView({
 
   const filteredContacts = useCallback(
     (search: string) => {
-      return contacts.filter(
-        (c) =>
-          (!search || c.name.includes(search))
-      );
+      return contacts.filter((c) => !search || c?.name?.includes(search));
     },
     [contactSearch, contacts]
   );
@@ -115,10 +114,18 @@ export default function ContactListBottomSheetView({
   return (
     <BottomSheetFlashList
       ListHeaderComponent={
-        <FlashListHeader
-          onChangeText={setContactSearch}
-          value={contactSearch}
-        />
+        <View className="px-2 flex flex-col">
+          <Text className="text-lg text-c-tab-icon-selected mb-2">
+            Add Contacts To Queue
+          </Text>
+          <BottomSheetTextInput
+            onChangeText={(text) => setContactSearch(text)}
+            value={contactSearch}
+            className=" rounded bg-gray-50 px-4 py-2"
+            placeholder={"Search..."}
+          />
+          <Text className="text-sm text-c-tab-icon-regular mb-2 mt-1">Contacts</Text>
+        </View>
       }
       data={filteredContacts(contactSearch)}
       renderItem={renderItem}
