@@ -291,7 +291,7 @@ export const CallerQueuesProvider = ({
         startTransition(() => {
           if (data.length > 0) {
             setContacts(
-              data.filter((c) => c.phoneNumbers && c.phoneNumbers.length > 0)
+              data.filter((c) => c.phoneNumbers && c.phoneNumbers?.length > 0)
             );
           }
         });

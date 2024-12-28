@@ -108,7 +108,7 @@ export default function ContactListBottomSheetView({
     (search: string) => {
       return contacts.filter((c) => !search || c?.name?.includes(search));
     },
-    [contactSearch, contacts]
+    [contacts]
   );
 
   return (
